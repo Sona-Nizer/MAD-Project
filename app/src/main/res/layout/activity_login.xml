@@ -137,7 +137,7 @@
         android:layout_marginStart="22dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="20dp"
-        android:text="I'm not an Admin?"
+        android:text="Not an Admin?"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="bold"
