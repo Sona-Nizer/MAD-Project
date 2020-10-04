@@ -51,13 +51,28 @@ public class RegisterActivity extends AppCompatActivity {
         {
             Toast.makeText(this, "Please Enter your name...", Toast.LENGTH_SHORT).show();
         }
+        else if(!name.matches("[a-zA-Z ]+"))
+        {
+            InputName.requestFocus();
+            InputName.setError("PLEASE ENTER ONLY ALPHABETICAL CHARACTER");
+        }
         else if (TextUtils.isEmpty(phone))
         {
             Toast.makeText(this, "Please Enter your phone number...", Toast.LENGTH_SHORT).show();
         }
+        else if(!phone.matches("^(?:0|94|\\+94|0094)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|91)(0|2|3|4|5|7|9)|7(0|1|2|5|6|7|8)\\d)\\d{6}$"))
+        {
+            InputPhoneNumber.requestFocus();
+            InputPhoneNumber.setError("Please Enter a Valid Phone Number");
+        }
         else if (TextUtils.isEmpty(password))
         {
             Toast.makeText(this, "Please Enter your password...", Toast.LENGTH_SHORT).show();
+        }
+        else if(!password.matches("^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$"))
+        {
+            InputPassword.requestFocus();
+            InputPassword.setError(" Password must contain minimum 8 characters with at least 1 Number and 1 Special Character");
         }
         else
         {
@@ -88,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             if (task.isSuccessful())
                             {
-                                Toast.makeText(RegisterActivity.this, "Congratulations !! your account has been created.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "Congratulations !! Your account has been created.", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);
