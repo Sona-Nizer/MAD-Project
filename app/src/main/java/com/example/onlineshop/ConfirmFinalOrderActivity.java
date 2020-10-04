@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.onlineshop.Prevalent.Prevalent;
@@ -26,7 +27,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
     private EditText nameEditText,phoneEditText,addressEditText,cityEditText;
     private Button confirmOrderBtn;
     private String totalAmount = "";
-
+    private TextView txtTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +35,15 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_confirm_final_order);
 
         totalAmount = getIntent().getStringExtra("Total Price");
-        Toast.makeText(this, "Total Price = Rs "+totalAmount,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Total Price = Rs."+totalAmount,Toast.LENGTH_LONG).show();
         confirmOrderBtn = (Button) findViewById(R.id.confirm_final_order_btn);
         nameEditText =(EditText) findViewById(R.id.shippment_name);
         phoneEditText =(EditText) findViewById(R.id.shippment_phone_number);
         addressEditText =(EditText) findViewById(R.id.shippment_address);
         cityEditText =(EditText) findViewById(R.id.shippment_city);
 
-
-
+        txtTotal = (TextView)findViewById(R.id.txtTotalAmount);
+        txtTotal.setText("Total Price : Rs."+String.valueOf(totalAmount));
 
         confirmOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
