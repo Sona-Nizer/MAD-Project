@@ -10,10 +10,10 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AdminCategoryActivity extends AppCompatActivity {
-    private ImageView tShirts, sportsTShirts, femaleDresses, sweathers;
-    private ImageView glasses, hatsCaps, walletsBagsPurses, shoes;
-    private ImageView headPhonesHandFree, Laptops, watches, mobilePhones;
-    private Button LogoutBtn, CheckOrdersBtn;
+//    private ImageView tShirts, sportsTShirts, femaleDresses, sweathers;
+//    private ImageView glasses, hatsCaps, walletsBagsPurses, shoes;
+    private ImageView headPhonesHandFree, Laptops, watches, mobilePhones, gaming, tv;
+    private Button LogoutBtn, CheckOrdersBtn, ViewOrdersBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,17 @@ public class AdminCategoryActivity extends AppCompatActivity {
             }
         });
 
+        ViewOrdersBtn = (Button) findViewById(R.id.view_orders_btn);
+
+        ViewOrdersBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(AdminCategoryActivity.this,AdminViewOrdersActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
 //        tShirts = (ImageView) findViewById(R.id.t_shirts);
@@ -57,6 +68,8 @@ public class AdminCategoryActivity extends AppCompatActivity {
         Laptops = (ImageView) findViewById(R.id.laptop_pc);
         watches = (ImageView) findViewById(R.id.watches);
         mobilePhones = (ImageView) findViewById(R.id.mobilephones);
+        gaming = (ImageView) findViewById(R.id.gaming_image);
+        tv = (ImageView) findViewById(R.id.tv_image);
 
 
 //        tShirts.setOnClickListener(new View.OnClickListener() {
@@ -186,6 +199,26 @@ public class AdminCategoryActivity extends AppCompatActivity {
             {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category", "Mobile Phones");
+                startActivity(intent);
+            }
+        });
+
+        gaming.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+                intent.putExtra("category", "gaming");
+                startActivity(intent);
+            }
+        });
+
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+                intent.putExtra("category", "tv");
                 startActivity(intent);
             }
         });
